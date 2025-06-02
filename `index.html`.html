@@ -5,226 +5,209 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>cobaia da ste</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
-
-  html, body {
-    margin: 0; padding: 0; height: 100%;
-    background: #ffc0cb; /* pink */
-    font-family: 'Baloo 2', cursive, sans-serif;
-    color: #5a1a43;
-    overflow-x: hidden;
-  }
-
+  /* Body style */
   body {
-    border: 10px solid white;
-    box-sizing: border-box;
+    background-color: #ffe4ec; /* rosinha claro */
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #8b3a57;
+    overflow-x: hidden;
     position: relative;
-  }
-
-  .heart {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    background-color: #e00000;
-    transform: rotate(45deg);
-    left: 0;
-    top: 0;
-    pointer-events: none;
-  }
-  .heart::before,
-  .heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: #e00000;
-    border-radius: 50%;
-  }
-  .heart::before {
-    top: -10px;
-    left: 0;
-  }
-  .heart::after {
-    top: 0;
-    left: -10px;
-  }
-
-  /* Static hearts scattered around */
-  .static-heart {
-    position: fixed;
-    width: 25px;
-    height: 25px;
-    background-color: #cc0000;
-    transform: rotate(45deg);
-  }
-  .static-heart::before,
-  .static-heart::after {
-    content: "";
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #cc0000;
-    border-radius: 50%;
-  }
-  .static-heart::before {
-    top: -12.5px;
-    left: 0;
-  }
-  .static-heart::after {
-    top: 0;
-    left: -12.5px;
-  }
-
-  /* Container and text styling */
-  .container {
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    border: 15px solid white; /* borda branca */
+    box-sizing: border-box;
+  }
+  /* Large emoji container and title */
+  #intro {
     text-align: center;
-    padding: 20px;
+    padding: 3rem 1rem 1rem 1rem;
   }
-
-  .title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 10px;
-    color: #a83a62;
-    text-shadow: 1px 1px 3px #fff;
-  }
-  .subtitle {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-  }
-  .bunny-emojis {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-
-  .message {
-    font-size: 1.6rem;
-    margin: 20px 0 30px;
-    font-weight: 600;
-  }
-
-  button {
-    background-color: #97004d;
-    border: none;
-    padding: 15px 40px;
-    color: white;
-    font-size: 1.3rem;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(151,0,77,0.4);
-    transition: background-color 0.3s ease;
-    font-weight: 700;
+  #intro-emoji {
+    font-size: 12rem;
     user-select: none;
   }
-  button:hover {
-    background-color: #c0006d;
+  #intro-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
   }
-
-  .hidden {
-    display: none;
+  /* Cute emojis row */
+  #emojis {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    user-select: none;
   }
-
-  /* White rabbit image container */
-  .rabbit-img {
-    width: 140px;
-    height: 140px;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 0 3px #fff);
+  /* Message text */
+  #message {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
   }
-
-  /* Heart burst animation styles */
+  /* Button: dark pink */
+  #btn-access {
+    display: block;
+    margin: 0 auto 3rem auto;
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background-color: #9b2e57;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(155,46,87,0.6);
+    transition: background-color 0.3s ease;
+  }
+  #btn-access:hover {
+    background-color: #7e2446;
+  }
+  /* Thank you message */
+  #thankyou {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #9b2e57;
+  }
+  /* Red heart style for hearts that animate */
+  .heart {
+    position: fixed;
+    color: #e43850;
+    font-size: 2rem;
+    pointer-events: none;
+    user-select: none;
+    z-index: 9999;
+    animation-name: floatUp;
+    animation-timing-function: ease-out;
+    animation-iteration-count: 1;
+  }
+  /* Hearts float upward and fade */
   @keyframes floatUp {
     0% {
-      transform: translateY(0) rotate(45deg);
       opacity: 1;
+      transform: translateY(0) scale(1);
     }
     100% {
-      transform: translateY(-100vh) rotate(45deg);
       opacity: 0;
+      transform: translateY(-150px) scale(1.5);
+    }
+  }
+  /* Background scattered hearts */
+  .background-heart {
+    position: fixed;
+    color: #e43850;
+    font-size: 1.1rem;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: floatSlowUp linear infinite;
+  }
+  /* Slow up float for background hearts */
+  @keyframes floatSlowUp {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-100px) translateX(10px);
+      opacity: 0.3;
     }
   }
 </style>
 </head>
 <body>
-  <!-- Static hearts scattered -->
-  <div class="static-heart" style="top: 20px; left: 60px;"></div>
-  <div class="static-heart" style="top: 150px; left: 180px;"></div>
-  <div class="static-heart" style="top: 80vh; left: 90vw;"></div>
-  <div class="static-heart" style="top: 60vh; left: 40vw;"></div>
-  <div class="static-heart" style="top: 10vh; left: 80vw;"></div>
-  <div class="static-heart" style="top: 70vh; left: 20vw;"></div>
-  <div class="static-heart" style="top: 40vh; left: 10vw;"></div>
-  <div class="static-heart" style="top: 85vh; left: 75vw;"></div>
-
-  <div class="container" id="mainContent">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/White_rabbit_clipart.svg/120px-White_rabbit_clipart.svg.png" alt="Coelho branco" class="rabbit-img" />
-    <div class="title">pare com a kiki?</div>
-    <div class="bunny-emojis">🐰🐇✨🥕🌸🐣</div>
-    <div class="message">Gostaria de ver mais fotos?</div>
-    <button id="clickButton">clique aqui</button>
+<div id="intro" role="main" aria-label="Introdução">
+  <div id="intro-emoji" aria-hidden="true">🐇</div>
+  <div id="intro-text">Parece com a Kiki?</div>
+  <div id="emojis" aria-label="Emojis fofos de coelho, estrela, cenoura, matinho e coração">
+    🐰 ⭐ 🥕 🍃 ❤️ 🐇 ✨ 🥕 ❤️
   </div>
+  <div id="message">Você gostaria de ver mais fotos?</div>
+  <button id="btn-access" aria-label="Clique aqui para permitir acesso à localização">clique aqui</button>
+</div>
+<div id="thankyou" style="display:none;" aria-live="polite"></div>
 
 <script>
-  const button = document.getElementById('clickButton');
-  const mainContent = document.getElementById('mainContent');
+// Reference to elements
+const btnAccess = document.getElementById('btn-access');
+const message = document.getElementById('message');
+const introSection = document.getElementById('intro');
+const thankyouDiv = document.getElementById('thankyou');
 
-  // Function to create floating hearts on the screen
-  function createFloatingHeart() {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.style.left = Math.random() * window.innerWidth + 'px';
-    heart.style.top = window.innerHeight + 20 + 'px';
-    heart.style.width = 15 + Math.random() * 15 + 'px';
-    heart.style.height = heart.style.width;
-
-    heart.style.backgroundColor = "#e00000";
-    heart.style.animation = 'floatUp 3s ease forwards';
-
-    // Remove heart after animation
-    heart.addEventListener('animationend', () => heart.remove());
-
-    document.body.appendChild(heart);
-  }
-
-  // Burst hearts repeatedly for a short time
-  function heartBurst() {
-    let count = 0;
-    const interval = setInterval(() => {
-      createFloatingHeart();
-      count++;
-      if (count > 30) clearInterval(interval);
-    }, 100);
-  }
-
-  button.addEventListener('click', () => {
-    // Request geolocation
-    if (!navigator.geolocation) {
-      alert("Seu navegador não suporta Geolocalização.");
-      return;
-    }
-
-    button.disabled = true;
-    button.textContent = "Aguardando permissão...";
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // Location access granted
-        mainContent.innerHTML = "<h2>Obrigado por clicar!</h2>";
-        heartBurst();
-      },
-      (error) => {
-        alert("Permissão de localização negada ou erro.");
-        button.disabled = false;
-        button.textContent = "clique aqui";
-      }
-    );
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.textContent = '❤️';
+  // Random horizontal position (5% to 95%)
+  heart.style.left = Math.random() * 90 + 5 + 'vw';
+  // Bottom start position
+  heart.style.bottom = '-2rem';
+  // Random animation duration between 1.5s and 3s
+  heart.style.animationDuration = (Math.random() * 1.5 + 1.5) + 's';
+  // Append heart to body
+  document.body.appendChild(heart);
+  // Remove the heart after animation ends
+  heart.addEventListener('animationend', () => {
+    heart.remove();
   });
+}
+
+// Background hearts scattered around the page
+function addBackgroundHearts() {
+  const count = 30;
+  for(let i=0; i<count; i++) {
+    const bheart = document.createElement('div');
+    bheart.className = 'background-heart';
+    bheart.textContent = '❤️';
+    bheart.style.left = Math.random() * 100 + 'vw';
+    bheart.style.top = Math.random() * 100 + 'vh';
+    bheart.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+    bheart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    bheart.style.animationDelay = (Math.random() * 20) + 's';
+    document.body.appendChild(bheart);
+  }
+}
+
+// Add background hearts on page load
+addBackgroundHearts();
+
+// Function to request location permission and handle it
+function requestLocation() {
+  if (!navigator.geolocation) {
+    alert('Desculpe, seu navegador não suporta acesso à localização.');
+    return;
+  }
+  // Ask for user's geolocation
+  navigator.geolocation.getCurrentPosition(position => {
+    // User allowed
+    introSection.style.display = 'none';
+    thankyouDiv.style.display = 'block';
+    thankyouDiv.textContent = 'Obrigado por clicar!';
+    // Generate multiple hearts as confetti effect
+    let heartsCount = 30;
+    let heartInterval = setInterval(() => {
+      createHeart();
+      heartsCount--;
+      if (heartsCount <= 0) {
+        clearInterval(heartInterval);
+      }
+    }, 100);
+  }, error => {
+    // Denied or error
+    alert('Não foi possível acessar sua localização sem permissão. Por favor, permita para continuar.');
+  });
+}
+
+// Button click event to ask permission
+btnAccess.addEventListener('click', () => {
+  requestLocation();
+});
 </script>
 </body>
 </html>
+
+
 
